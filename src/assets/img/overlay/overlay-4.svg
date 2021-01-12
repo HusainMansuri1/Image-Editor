@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+  <defs>
+    <pattern id="pattern" width="45" height="45" viewBox="0 0 40,40" patternUnits="userSpaceOnUse" patternTransform="rotate(0) ">
+      <rect id="pattern-background" width="400%" height="400%" fill="rgba(230, 255, 250,1)"/>
+      <path filter="url(#filter1pattern)" fill="#F9FBE7" d="M20 30 L24 20 L20 20z M20 10 L16 20 L20 20z"/>
+      <path filter="url(#filter2pattern)" fill="#2E7D32" d="M 26 20 L20 16 L20 20z M14 20 L20 24 L20 20z"/>
+    </pattern>
+    <filter id="filter1pattern">
+      <feTurbulence baseFrequency="2" numOctaves="2" type="fractalNoise" result="result1"/>
+      <feDisplacementMap in2="result1" scale="1" result="result2" xChannelSelector="R" in="SourceGraphic"/>
+      <feComposite in2="result2" in="SourceGraphic" operator="atop" result="fbSourceGraphic"/>
+    </filter>
+    <filter id="filter2pattern">
+      <feTurbulence baseFrequency="2" numOctaves="2" type="fractalNoise" result="result1"/>
+      <feDisplacementMap in2="result1" scale="2" result="result2" xChannelSelector="R" in="SourceGraphic"/>
+      <feComposite in2="result2" in="SourceGraphic" operator="atop" result="fbSourceGraphic"/>
+    </filter>
+  </defs>
+  <rect fill="url(#pattern)" height="100%" width="100%"/>
+</svg>
