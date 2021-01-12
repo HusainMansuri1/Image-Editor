@@ -64,6 +64,7 @@ class ImageGallery extends Component  {
     imageCollection[index].bgImg = '/assets/img/bg/bg-'+randomNo+'.jpg';
     this.setState( {imageCollection });
   }
+  
   render () {
     console.log(imgArray);
     return ( 
