@@ -8,8 +8,8 @@ const ImageCollection = (props) => {
         {props.class_ImageGallery_0.state.imageCollection.map((current, index) => 
           <ImageElement
             key={current.id} 
+            pushId_0={current.id}
             pushCurrent={current} 
-            pushIndex={index}
             pushIndex={index}
             class_ImageGallery_1={props.class_ImageGallery_0}
           />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ImageCollection from '../ImageCollection/ImageCollection';
-import OverlayCollection from '../OverlayCollection/OverlayCollection';
+// import OverlayCollection from '../OverlayCollection/OverlayCollection';
 import './ImageGallery.css';
 
 import {imgArray} from '../ImageBundle/ImageBundle';
@@ -13,7 +13,7 @@ class ImageGallery extends Component  {
     let imgID = 0;
 
     imgArray.map(element => {
-      this.imgCollectionReady.push(
+      return this.imgCollectionReady.push(
         {
           id: `img-${++imgID}`,
           bgImg: element.bg,
@@ -21,8 +21,6 @@ class ImageGallery extends Component  {
         }  
       )
     });
-
-    console.log("ready", this.imgCollectionReady);
   }
 
   state = {
@@ -65,7 +63,6 @@ class ImageGallery extends Component  {
     this.setState( {imageCollection });
   }
   render () {
-    console.log(imgArray);
     return ( 
       <div className="img-gallery">
         {/* <OverlayCollection data-ImageGallery_1={this}/> */}
