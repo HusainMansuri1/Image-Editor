@@ -7,52 +7,14 @@ import {imgArray} from '../ImageBundle/ImageBundle';
 
 
 class ImageGallery extends Component  {
-  imgCollectionReady = [];
-  constructor(){
-    super();
-    let imgID = 0;
-
-    imgArray.map(element => {
-      return this.imgCollectionReady.push(
-        {
-          id: `img-${++imgID}`,
-          bgImg: element.bg,
-          overlayImg: element.overlay
-        }  
-      )
-    });
-  }
-
   state = {
     projectName: "Image Editor",
-    
-    // imageCollection: [
-    //   {
-    //     id: "img-1",
-    //     overlayImg: "",
-    //     bgImg: "",
-    //   },
-
-    //   {
-    //     id: "img-2",
-    //     overlayImg: "",
-    //     bgImg: "",
-    //   },
-
-    //   {
-    //     id: "img-3",
-    //     overlayImg: "",
-    //     bgImg: "",
-    //   },
-
-    //   {
-    //     id: "img-4",
-    //     overlayImg: "",
-    //     bgImg: "",
-    //   },
-    // ],     
-
-    imageCollection: this.imgCollectionReady,
+  
+    imageCollection: [
+      {id: "img-1"},
+      {id: "img-2"},
+      {id: "img-3"},
+    ],
   }
 
   changeImageHandler = (index) => {
@@ -65,7 +27,7 @@ class ImageGallery extends Component  {
   render () {
     return ( 
       <div className="img-gallery">
-        {/* <OverlayCollection data-ImageGallery_1={this}/> */}
+        <h1 className="heading-1">{this.state.projectName}</h1>
         <ImageCollection class_ImageGallery_0={this}/>
       </div>
     );

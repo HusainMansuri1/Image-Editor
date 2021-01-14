@@ -21,31 +21,62 @@ class ImageElement extends Component {
       background: "coral",
     },
 
-    containerStyles: {
-      width: "250px",
-      height: "auto",
-      boxSizing: "content-box",
-      background: "#ccc",
+    containerRawStyles: {
+      width: "200",
+      height: "100",
+      color: "red",
+    },
+
+    overlayTextRawStyles: {
+      fontSize: "20",
+      color: "#fff",
+    },
+
+    overlayImgRawStyles: {
+      width: "150",
+      height: "150",
+      top: "0",
+      left: "0"
     }
+
   }
 
-  change = () => {
-    let containerStyles = {...this.state.containerStyles}
-    containerStyles.border = "10px solid red";
-    this.setState({containerStyles});
+  readyStylesHandler = (rawStyles) => {
+    let readyStylesObject = {};
+    let stylesNeedReconstructionArray = ["width", "height", "padding" ,"margin", "top", "left", "right", "bottom", "fontSize"];
+    
+    for (let [key, value] of Object.entries(rawStyles)) {
+      stylesNeedReconstructionArray.forEach(styleProperty => {
+        if(key === styleProperty) {
+          readyStylesObject[key] = `${value}px`;
+        } else if(!(key in readyStylesObject)) {
+          readyStylesObject[key] = value;
+        }
+      });
+    }
+    return readyStylesObject;
+  }
+
+  changeStyleHandler = (event, styleParent, styleProperty) => {
+    window[styleParent] = { ...this.state[styleParent]}
+
+    window[styleParent][styleProperty] = event.target.value;
+
+    console.log(window[styleParent]);
+
+    console.log(styleParent);
+
+    this.setState( { [styleParent]: window[styleParent]});
+    
   }
 
   downloadData = (index)  => {
     
     let container = document.getElementsByClassName("img-view-wrap")[index];
     container.classList.add("active");
-    // let container = document.querySelector(".img-view-wrap");
-    console.log('index:', index)
-    console.log('container:', container)
-
     let elem = document.querySelector(".active.img-view-wrap");
 
-    html2canvas(elem, { allowTaint: true }).then(function(canvas) {
+    html2canvas(elem, { allowTaint: true, scrollY: -window.scrollY, scrollX: -window.scrollX }).then(function(canvas) {
       var link = document.createElement("a");
       document.body.appendChild(link);
       link.download = "ci.png";
@@ -55,21 +86,6 @@ class ImageElement extends Component {
     });
 
     elem.classList.remove("active");
-    
-  }
-
-  readyStyles = (style) => {
-    return(
-      {
-        minWidth: `${style.minWidth}px`,
-        minHeight: `${style.minHeight}px`,
-        padding: `${style.padding}px`,
-        margin: `${style.margin}px`,
-        fontSize: `${style.fontSize}px`,
-        color: `${style.color}`,
-        background: `${style.background}`,
-      }
-    )
   }
 
   font = (event) => {
@@ -86,23 +102,21 @@ class ImageElement extends Component {
 
   handleImageUpload = (event) => {
     const [file] = event.target.files;
-    console.log('file:', file)
     
-    if (file) {
-      if(event.target.id === "bgImg"){
+    if(file) {
+      if(event.target.id === "bgImg") {
         let bgImg = URL.createObjectURL(file);
         this.setState({ bgImg });
-      } else if(event.target.id === "overlayImg"){
+      } else if(event.target.id === "overlayImg") {
         let overlayImg = URL.createObjectURL(file);
         this.setState({ overlayImg });
       }
-
     } 
   };
 
   render() {
     return(
-      <li className="img-collection-elem" style={ {border: "1px solid red", margin: "20px", float: "left", textAlign: "center", width: "300px",} }>
+      <li className="img-collection-elem">
         <ImageView class_ImageElement_0={this} pushId_1={this.props.pushId_0} />
         <ImageEditor class_ImageElement_0={this} />
         <button onClick={() => this.downloadData(this.props.pushIndex)}>Downlload</button>

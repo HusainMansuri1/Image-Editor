@@ -18,7 +18,7 @@ body{font-family: sans-serif;}
 /* CSS reset end */
 
 /* container styles */
-.container{max-width: 1250px;padding: 0 15px;margin: 0 auto;}
+.container{max-width: 1500px;padding: 0 15px;margin: 0 auto;}
 .container:before,.container:after {content: ' ';display: table;}
 .container:after {clear: both;}
 .container {*zoom: 1;}
