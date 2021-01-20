@@ -27,8 +27,11 @@ class ImageGallery extends Component  {
   render () {
     return ( 
       <div className="img-gallery">
-        <h1 className="heading-1">{this.state.projectName}</h1>
-        <ImageCollection class_ImageGallery_0={this}/>
+        <div className="container">
+          <h1 className="heading-1"><a href="/">{this.state.projectName}</a></h1>
+          <ImageCollection class_ImageGallery_0={this}/>
+        </div>
+        <footer>made by <a href="mailto:husain.m@media.net">husain.m</a></footer>
       </div>
     );
   }

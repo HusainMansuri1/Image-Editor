@@ -8,7 +8,7 @@ a:focus{-webkit-box-shadow:none;box-shadow:none;outline: none;}
 img {width: 100%;border: 0;vertical-align: middle;}
 ul, li{list-style: none}
 b,strong {font-weight: normal;}
-button,input,select,textarea{border:none;border:none;border-radius:0;background:0 0;-webkit-box-shadow:none;box-shadow:none;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:normal;outline:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+button,input,select,textarea{border:none;border:none;border-radius:0;background:0 0;-webkit-box-shadow:none;box-shadow:none;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:normal;outline:0;}
 select{cursor: pointer;}
 input,textarea,input:focus,textarea:focus {-webkit-box-shadow: none;box-shadow: none;outline: 0;}
 input[type=submit],button{cursor:pointer;outline: 0;}
@@ -22,3 +22,7 @@ body{font-family: sans-serif;}
 .container:before,.container:after {content: ' ';display: table;}
 .container:after {clear: both;}
 .container {*zoom: 1;}
+
+.clearfix:before,.clearfix:after {content: ' ';display: table;}
+.clearfix:after {clear: both;}
+.clearfix {*zoom: 1;}

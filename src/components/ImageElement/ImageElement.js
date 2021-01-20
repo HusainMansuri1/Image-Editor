@@ -2,53 +2,50 @@ import React, { Component } from 'react';
 import html2canvas from 'html2canvas';
 import ImageView from '../ImageView/ImageView';
 import ImageEditor from '../ImageEditor/ImageEditor';
-import bgImg from'../../assets/img/bg/bg-1.jpg';
-import overlayImg from'../../assets/img/overlay/overlay-1.svg';
+import bgImg from'../../assets/img/bg/bg-2.jpg';
+import overlayImg from'../../assets/img/overlay/overlay-6.svg';
 import './ImageElement.css';
 class ImageElement extends Component {
   state = {
     bgImg : bgImg,
     overlayImg: overlayImg,
     overlayText: "hello",
+    isOverlayImgCenter: false,
+    isOverlayTextCenter: false,
     
-    rawStyles: {
-      width: "200",
-      height: "200",
-      padding: "20",
-      margin: "20",
-      fontSize: "20",
-      color: "white",
-      background: "coral",
-    },
-
     containerRawStyles: {
       width: "200",
-      height: "100",
+      height: "200",
       color: "red",
     },
 
     overlayTextRawStyles: {
       fontSize: "20",
-      color: "#fff",
+      color: "#ffffff",
+      top: "0",
+      bottom: "auto",
+      left: "0",
+      right: "auto",
     },
 
     overlayImgRawStyles: {
-      width: "150",
-      height: "150",
+      width: "100",
+      height: "100",
       top: "0",
-      left: "0"
+      bottom: "auto",
+      left: "0",
+      right: "auto",
     }
-
   }
 
   readyStylesHandler = (rawStyles) => {
     let readyStylesObject = {};
-    let stylesNeedReconstructionArray = ["width", "height", "padding" ,"margin", "top", "left", "right", "bottom", "fontSize"];
+    let stylesNeedReconstructionArray = ["width", "height", "padding" ,"margin","fontSize", "top", "left", "bottom", "right", ];
     
     for (let [key, value] of Object.entries(rawStyles)) {
       stylesNeedReconstructionArray.forEach(styleProperty => {
         if(key === styleProperty) {
-          readyStylesObject[key] = `${value}px`;
+          (value !== "auto" && value !== "initial") ? readyStylesObject[key] = `${value}px`: readyStylesObject[key] = `${value}`;
         } else if(!(key in readyStylesObject)) {
           readyStylesObject[key] = value;
         }
@@ -57,21 +54,34 @@ class ImageElement extends Component {
     return readyStylesObject;
   }
 
-  changeStyleHandler = (event, styleParent, styleProperty) => {
+  centerHandler = (event, property) => {
+    window[property] = !this.state[property];
+    this.setState({ [property]: window[property]}); 
+  }
+
+  styleChangeHandler = (event, styleParent, styleProperty) => {
     window[styleParent] = { ...this.state[styleParent]}
-
     window[styleParent][styleProperty] = event.target.value;
-
-    console.log(window[styleParent]);
-
-    console.log(styleParent);
-
     this.setState( { [styleParent]: window[styleParent]});
-    
+  }
+
+  positionStyleChangeHandler = (event, styleParent, styleProperty) => {
+    window[styleParent] = { ...this.state[styleParent]}
+    if(styleProperty === 'top') {
+      window[styleParent].bottom="auto";
+    } else if(styleProperty === 'bottom'){
+      window[styleParent].top="auto";
+    }
+    if(styleProperty === 'left') {
+      window[styleParent].right="auto";
+    } else if(styleProperty === 'right'){
+      window[styleParent].left="auto";
+    }
+    window[styleParent][styleProperty] = `${event.target.value}`;
+    this.setState( { [styleParent]: window[styleParent]});
   }
 
   downloadData = (index)  => {
-    
     let container = document.getElementsByClassName("img-view-wrap")[index];
     container.classList.add("active");
     let elem = document.querySelector(".active.img-view-wrap");
@@ -88,13 +98,7 @@ class ImageElement extends Component {
     elem.classList.remove("active");
   }
 
-  font = (event) => {
-    let rawStyles = {...this.state.rawStyles};
-    rawStyles.fontSize = `${event.target.value}`;
-    this.setState({rawStyles});
-  }
-
-  overlayText = (event) => {
+  overlayTextChangeHandler = (event) => {
     let overlayText = this.state.overlayText;
     overlayText = event.target.value;
     this.setState({overlayText})
@@ -116,10 +120,10 @@ class ImageElement extends Component {
 
   render() {
     return(
-      <li className="img-collection-elem">
+      <li className="img-collection-elem" id={this.props.pushId_0}>
         <ImageView class_ImageElement_0={this} pushId_1={this.props.pushId_0} />
-        <ImageEditor class_ImageElement_0={this} />
-        <button onClick={() => this.downloadData(this.props.pushIndex)}>Downlload</button>
+        <ImageEditor class_ImageElement_0={this} pushId_1={this.props.pushId_0}/>
+        <button className="download-btn" onClick={() => this.downloadData(this.props.pushIndex)}>Download</button>
 
         {/* <img src={this.props.pushCurrent.bgImg} /, {allowTaint : true,}>
         <img src={this.props.pushCurrent.overlayImg} /> */}

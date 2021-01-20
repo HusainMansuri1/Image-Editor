@@ -1,6 +1,19 @@
 .img-view-outer-wrap{
-  border-bottom: 1px solid #999;
   padding: 10px;
+  border-bottom: 1px solid #999;
+  margin-bottom: 10px;
+  position: -webkit-sticky;
+  /* position: sticky;
+  top: 0; */
+  background: #fff;
+}
+
+.abs-center{
+  top: 50% !important;
+  bottom: auto !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%);
 }
 
 .img-view-wrap{
@@ -19,10 +32,8 @@
   z-index: 1;
 }
 
-.overlay-text-container{
+.overlay-text{
+  padding: 5px;
   position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  padding: 5px
+  z-index: 2
 }

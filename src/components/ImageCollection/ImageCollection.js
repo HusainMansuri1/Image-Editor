@@ -4,7 +4,7 @@ import './ImageCollection.css';
 const ImageCollection = (props) => {
   return ( 
     <div className="image-collection-wrap">
-      <ul className="img-collection-list">
+      <ul className="img-collection-list clearfix">
         {props.class_ImageGallery_0.state.imageCollection.map((current, index) => 
           <ImageElement
             key={current.id} 
