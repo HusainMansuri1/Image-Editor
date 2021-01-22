@@ -8,7 +8,7 @@ import {imgArray} from '../ImageBundle/ImageBundle';
 
 class ImageGallery extends Component  {
   state = {
-    projectName: "Image Editor",
+    projectName: "Creative Editor",
   
     imageCollection: [
       {id: "img-1"},
