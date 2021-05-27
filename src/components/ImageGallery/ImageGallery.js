@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import ImageCollection from '../ImageCollection/ImageCollection';
-// import OverlayCollection from '../OverlayCollection/OverlayCollection';
-import './ImageGallery.css';
-
-import {imgArray} from '../ImageBundle/ImageBundle';
-
+import ImageElement from 'components/ImageElement/ImageElement';
+import 'components/ImageGallery/ImageGallery.css';
 
 class ImageGallery extends Component  {
   state = {
@@ -12,26 +8,25 @@ class ImageGallery extends Component  {
   
     imageCollection: [
       {id: "img-1"},
-      {id: "img-2"},
-      {id: "img-3"},
     ],
   }
 
-  changeImageHandler = (index) => {
-    let imageCollection = [...this.state.imageCollection];
-    let length = this.state.imageCollection.length;
-    let randomNo =  Math.floor((Math.random() * length) + 1);
-    imageCollection[index].bgImg = '/assets/img/bg/bg-'+randomNo+'.jpg';
-    this.setState( {imageCollection });
-  }
   render () {
     return ( 
-      <div className="img-gallery">
-        <div className="container">
-          <h1 className="heading-1"><a href="/">{this.state.projectName}</a></h1>
-          <ImageCollection class_ImageGallery_0={this}/>
-        </div>
-        <footer>made by <a href="mailto:husain.m@media.net">husain.m</a></footer>
+      <div className="image-collection-wrap">
+        <ul className="img-collection-list clearfix">
+          { 
+            this.state.imageCollection.map((current, index) => 
+              <ImageElement
+                key={current.id} 
+                pushId_0={current.id}
+                pushCurrent={current} 
+                pushIndex={index}
+                class_ImageGallery_0={this}
+              />
+            )
+          }
+        </ul>
       </div>
     );
   }

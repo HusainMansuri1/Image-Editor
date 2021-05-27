@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import html2canvas from 'html2canvas';
-import ImageView from '../ImageView/ImageView';
-import ImageEditor from '../ImageEditor/ImageEditor';
-import bgImg from'../../assets/img/bg/bg-2.jpg';
-import overlayImg from'../../assets/img/overlay/overlay-6.svg';
-import './ImageElement.css';
+import ImageView from 'components/ImageView/ImageView';
+import ImageEditor from 'components/ImageEditor/ImageEditor';
+import bgImg from'assets/img/bg/bg-2.jpg';
+import overlayImg from'assets/img/overlay/overlay-6.svg';
+import 'components/ImageElement/ImageElement.css';
+
 class ImageElement extends Component {
   state = {
     bgImg : bgImg,
@@ -104,17 +105,14 @@ class ImageElement extends Component {
     this.setState({overlayText})
   }
 
+
   handleImageUpload = (event) => {
     const [file] = event.target.files;
+    const imageType = event.target.id
     
     if(file) {
-      if(event.target.id === "bgImg") {
-        let bgImg = URL.createObjectURL(file);
-        this.setState({ bgImg });
-      } else if(event.target.id === "overlayImg") {
-        let overlayImg = URL.createObjectURL(file);
-        this.setState({ overlayImg });
-      }
+      window[event.target.id] = URL.createObjectURL(file);
+      this.setState({ [imageType]: window[event.target.id]} );
     } 
   };
 
@@ -124,10 +122,6 @@ class ImageElement extends Component {
         <ImageView class_ImageElement_0={this} pushId_1={this.props.pushId_0} />
         <ImageEditor class_ImageElement_0={this} pushId_1={this.props.pushId_0}/>
         <button className="download-btn" onClick={() => this.downloadData(this.props.pushIndex)}>Download</button>
-
-        {/* <img src={this.props.pushCurrent.bgImg} /, {allowTaint : true,}>
-        <img src={this.props.pushCurrent.overlayImg} /> */}
-        {/* <button onClick={ ()=> this.props.class_ImageGallery_1.changeImageHandler(this.props.pushIndex)}>ChangeImg</button> */}
       </li>        
     )
   }

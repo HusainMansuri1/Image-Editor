@@ -1,10 +1,9 @@
-import './ImageView.css';
+import 'components/ImageView/ImageView.css';
 
 const ImageView = (props) => {
   const overlayImgClasses = (staticClass, dynamicCheck) => {
     let classes = staticClass;
     if(props.class_ImageElement_0.state[dynamicCheck])  classes += " abs-center" ;
-    console.log(classes);
     return classes; 
   }
   

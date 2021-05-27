@@ -1,4 +1,4 @@
-import './EditorSection.css';
+import 'components/EditorSection/EditorSection.css';
 
 const EditorSection = (props) => {
   return (

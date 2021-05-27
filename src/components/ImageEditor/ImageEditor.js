@@ -1,7 +1,6 @@
 import React from 'react';
-import EditorSection from '../EditorSection/EditorSection';
-import EditorItem from '../EditorItem/EditorItem'
-import './ImageEditor.css';
+import EditorItem from 'components/EditorItem/EditorItem'
+import 'components/ImageEditor/ImageEditor.css';
 
 const ImageEditor = (props) => {
   
@@ -10,12 +9,12 @@ const ImageEditor = (props) => {
       <h2 className="heading-2">Image Editor</h2>
       <div className="note"><span className="note-head">Note</span>: "px" will be added to Numeric values</div>
       <div className="editor-section">
-         <h3 className="heading-3">Background Image</h3>
+        <h3 className="heading-3">Background Image</h3>
         <input id="bgImg" className="file-upload-input" type="file" accept="image/*" multiple = {false} onChange={props.class_ImageElement_0.handleImageUpload}/>
         < EditorItem 
           type="number"
           label="width"
-          labelForFocus={`bgImg-width-${props.pushId_1}`}
+          labelForFocusId={`bgImg-width-${props.pushId_1}`}
           styleParent="containerRawStyles"
           styleProperty="width"
           change={props.class_ImageElement_0.styleChangeHandler}
@@ -25,7 +24,7 @@ const ImageEditor = (props) => {
         < EditorItem 
           type="number"
           label="height"
-          labelForFocus={`bgImg-height-${props.pushId_1}`}
+          labelForFocusId={`bgImg-height-${props.pushId_1}`}
           styleParent="containerRawStyles"
           styleProperty="height"
           change={props.class_ImageElement_0.styleChangeHandler}
@@ -39,7 +38,7 @@ const ImageEditor = (props) => {
         < EditorItem 
           type="number"
           label="width"
-          labelForFocus={`overlayImg-width-${props.pushId_1}`}
+          labelForFocusId={`overlayImg-width-${props.pushId_1}`}
           styleParent="overlayImgRawStyles"
           styleProperty="width"
           change={props.class_ImageElement_0.styleChangeHandler}
@@ -49,7 +48,7 @@ const ImageEditor = (props) => {
         < EditorItem 
           type="number"
           label="height"
-          labelForFocus={`overlayImg-height-${props.pushId_1}`}
+          labelForFocusId={`overlayImg-height-${props.pushId_1}`}
           styleParent="overlayImgRawStyles"
           styleProperty="height"
           change={props.class_ImageElement_0.styleChangeHandler}
@@ -63,47 +62,47 @@ const ImageEditor = (props) => {
         {
           props.class_ImageElement_0.state.isOverlayImgCenter ? null :
           <React.Fragment>
-          < EditorItem 
-          type="number"
-          label="top"
-          labelForFocus={`overlayTextRawStyles-top-${props.pushId_1}`}
-          styleParent="overlayImgRawStyles"
-          styleProperty="top"
-          change={props.class_ImageElement_0.positionStyleChangeHandler}
-          value={props.class_ImageElement_0.state.overlayImgRawStyles.top}
-          placeholder="Enter top"
-        />
-        < EditorItem 
-          type="number"
-          label="bottom"
-          labelForFocus={`overlayImgRawStyles-bottom-${props.pushId_1}`}
-          styleParent="overlayImgRawStyles"
-          styleProperty="bottom"
-          change={props.class_ImageElement_0.positionStyleChangeHandler}
-          value={props.class_ImageElement_0.state.overlayImgRawStyles.bottom}
-          placeholder="Enter bottom"
-        />
-        < EditorItem 
-          type="number"
-          label="left"
-          labelForFocus={`overlayImgRawStyles-left-${props.pushId_1}`}
-          styleParent="overlayImgRawStyles"
-          styleProperty="left"
-          change={props.class_ImageElement_0.positionStyleChangeHandler}
-          value={props.class_ImageElement_0.state.overlayImgRawStyles.left}
-          placeholder="Enter left"
-        />
-        < EditorItem 
-          type="number"
-          label="right"
-          labelForFocus={`overlayImgRawStyles-right-${props.pushId_1}`}
-          styleParent="overlayImgRawStyles"
-          styleProperty="right"
-          change={props.class_ImageElement_0.positionStyleChangeHandler}
-          value={props.class_ImageElement_0.state.overlayImgRawStyles.right}
-          placeholder="Enter right"
-        />
-        </React.Fragment>
+            < EditorItem 
+              type="number"
+              label="top"
+              labelForFocusId={`overlayTextRawStyles-top-${props.pushId_1}`}
+              styleParent="overlayImgRawStyles"
+              styleProperty="top"
+              change={props.class_ImageElement_0.positionStyleChangeHandler}
+              value={props.class_ImageElement_0.state.overlayImgRawStyles.top}
+              placeholder="Enter top"
+            />
+            < EditorItem 
+              type="number"
+              label="bottom"
+              labelForFocusId={`overlayImgRawStyles-bottom-${props.pushId_1}`}
+              styleParent="overlayImgRawStyles"
+              styleProperty="bottom"
+              change={props.class_ImageElement_0.positionStyleChangeHandler}
+              value={props.class_ImageElement_0.state.overlayImgRawStyles.bottom}
+              placeholder="Enter bottom"
+            />
+            < EditorItem 
+              type="number"
+              label="left"
+              labelForFocusId={`overlayImgRawStyles-left-${props.pushId_1}`}
+              styleParent="overlayImgRawStyles"
+              styleProperty="left"
+              change={props.class_ImageElement_0.positionStyleChangeHandler}
+              value={props.class_ImageElement_0.state.overlayImgRawStyles.left}
+              placeholder="Enter left"
+            />
+            < EditorItem 
+              type="number"
+              label="right"
+              labelForFocusId={`overlayImgRawStyles-right-${props.pushId_1}`}
+              styleParent="overlayImgRawStyles"
+              styleProperty="right"
+              change={props.class_ImageElement_0.positionStyleChangeHandler}
+              value={props.class_ImageElement_0.state.overlayImgRawStyles.right}
+              placeholder="Enter right"
+            />
+          </React.Fragment>
         }
       </div>
       <div className="editor-section">
@@ -115,7 +114,7 @@ const ImageEditor = (props) => {
         < EditorItem 
           type="number"
           label="size"
-          labelForFocus={`overlayTextRawStyles-fontSize-${props.pushId_1}`}
+          labelForFocusId={`overlayTextRawStyles-fontSize-${props.pushId_1}`}
           styleParent="overlayTextRawStyles"
           styleProperty="fontSize"
           change={props.class_ImageElement_0.styleChangeHandler}
@@ -125,7 +124,7 @@ const ImageEditor = (props) => {
         < EditorItem 
           type="color"
           label="color"
-          labelForFocus={`overlayTextRawStyles-color-${props.pushId_1}`}
+          labelForFocusId={`overlayTextRawStyles-color-${props.pushId_1}`}
           styleParent="overlayTextRawStyles"
           styleProperty="color"
           change={props.class_ImageElement_0.styleChangeHandler}
@@ -138,11 +137,11 @@ const ImageEditor = (props) => {
         </div>
         {
           props.class_ImageElement_0.state.isOverlayTextCenter ? null :
-            <React.Fragment>
+          <React.Fragment>
             < EditorItem 
               type="number"
               label="top"
-              labelForFocus={`overlayTextRawStyles-top-${props.pushId_1}`}
+              labelForFocusId={`overlayTextRawStyles-top-${props.pushId_1}`}
               styleParent="overlayTextRawStyles"
               styleProperty="top"
               change={props.class_ImageElement_0.positionStyleChangeHandler}
@@ -152,7 +151,7 @@ const ImageEditor = (props) => {
             < EditorItem 
               type="number"
               label="bottom"
-              labelForFocus={`overlayTextRawStyles-bottom-${props.pushId_1}`}
+              labelForFocusId={`overlayTextRawStyles-bottom-${props.pushId_1}`}
               styleParent="overlayTextRawStyles"
               styleProperty="bottom"
               change={props.class_ImageElement_0.positionStyleChangeHandler}
@@ -162,7 +161,7 @@ const ImageEditor = (props) => {
             < EditorItem 
               type="number"
               label="left"
-              labelForFocus={`overlayTextRawStyles-left-${props.pushId_1}`}
+              labelForFocusId={`overlayTextRawStyles-left-${props.pushId_1}`}
               styleParent="overlayTextRawStyles"
               styleProperty="left"
               change={props.class_ImageElement_0.positionStyleChangeHandler}
@@ -172,7 +171,7 @@ const ImageEditor = (props) => {
             < EditorItem 
               type="number"
               label="right"
-              labelForFocus={`overlayTextRawStyles-right-${props.pushId_1}`}
+              labelForFocusId={`overlayTextRawStyles-right-${props.pushId_1}`}
               styleParent="overlayTextRawStyles"
               styleProperty="right"
               change={props.class_ImageElement_0.positionStyleChangeHandler}
